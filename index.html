@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<script type="text/javascript" src="script.js"></script>
+<style>
+body {
+  font-family: Arial;
+  font-size: 17px;
+  padding: 8px;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.row {
+  display: -ms-flexbox; /* IE10 */
+  display: flex;
+  -ms-flex-wrap: wrap; /* IE10 */
+  flex-wrap: wrap;
+  margin: 0 -16px;
+}
+
+.col-25 {
+  -ms-flex: 25%; /* IE10 */
+  flex: 25%;
+}
+
+.col-50 {
+  -ms-flex: 50%; /* IE10 */
+  flex: 50%;
+}
+
+.col-75 {
+  -ms-flex: 75%; /* IE10 */
+  flex: 75%;
+}
+
+.col-25,
+.col-50,
+.col-75 {
+  padding: 0 16px;
+}
+
+.container {
+  background-color: #f2f2f2;
+  padding: 5px 20px 15px 20px;
+  border: 1px solid lightgrey;
+  border-radius: 3px;
+}
+
+input[type=text] {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+input[type=date] {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+input[type=time] {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+select[id=shopAdr] {
+  width: 100%;
+  margin-bottom: 20px;
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+label {
+  margin-bottom: 10px;
+  display: block;
+}
+
+.icon-container {
+  margin-bottom: 20px;
+  padding: 7px 0;
+  font-size: 24px;
+}
+
+.btn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 12px;
+  margin: 10px 0;
+  border: none;
+  width: 100%;
+  border-radius: 3px;
+  cursor: pointer;
+  font-size: 17px;
+}
+
+.btn:hover {
+  background-color: #45a049;
+}
+
+a {
+  color: #2196F3;
+}
+
+hr {
+  border: 1px solid lightgrey;
+}
+
+span.price {
+  float: right;
+  color: grey;
+}
+
+/* Responsive layout - when the screen is less than 800px wide, make the two columns stack on top of each other instead of next to each other (also change the direction - make the "cart" column go on top) */
+@media (max-width: 800px) {
+  .row {
+    flex-direction: column-reverse;
+  }
+  .col-25 {
+    margin-bottom: 20px;
+  }
+}
+
+.dropbtn {
+  background-color: #3498DB;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+  cursor: pointer;
+}
+
+.dropbtn:hover, .dropbtn:focus {
+  background-color: #2980B9;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  overflow: auto;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+.dropdown a:hover {background-color: #ddd;}
+
+.show {display: block;}
+</style>
+</head>
+<body onload="myFunction()">
+<script>
+	function myFunction() {
+		let html = document.getElementById("ccformContainer").innerHTML;
+		document.getElementById("showcontent").innerHTML = html;
+	}
+    function updateForm(control) {
+        if (control.id == "paypal") {
+			let html = document.getElementById("paypalformContainer").innerHTML;
+			document.getElementById("showcontent").innerHTML = html;
+        } else {
+			let html = document.getElementById("ccformContainer").innerHTML;
+			document.getElementById("showcontent").innerHTML = html;				
+        }
+    }
+	var $collapseContainer = $('#collapseContainer');
+	var $checkbox = $('#someCheckbox');
+	$checkbox.change(function() { 
+	  $collapseContainer.collapse('toggle');
+	}); 
+
+	$(document).ready(function() {
+	   $collapseContainer.collapse($checkbox.prop('checked') ? "show" : "hide");
+	});
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+<h2>HP Super Delivery</h2>
+<p></p>
+<div class="row">
+  <div class="col-75">
+    <div class="container">
+      <form action="/action_page.php">
+      
+        <div class="row">
+          <div class="col-50">
+            <h3>Information</h3>
+			<label>請選擇配送方式</label>
+			<label class="containerRadio"><input name="paymentType" type="radio" id="creditCard" onclick="updateForm(this);" checked="checked" value="paypal"><span class="radio"></span>
+			超商
+			</label>
+			<label class="containerRadio"><input name="paymentType" type="radio" id="paypal" value="credit card" onclick="updateForm(this);"><span class="radio"></span>
+			宅配
+			</label>
+			<div id="showcontent">
+			</div>
+          </div>          
+        </div>
+        <input type="button" value="Continue to checkout" class="btn">
+      </form>
+    </div>
+  </div>
+  <div class="col-25">
+    <div class="container">
+      <h4>Cart <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> <b>3</b></span></h4>
+      <p><a href="#">加拿大 特選帶骨牛小排</a> <span class="price">$790</span></p>
+      <p><a href="#">林柏好食 酸菜白肉鍋底</a> <span class="price">$299</span></p>
+      <p><a href="#">紐西蘭 頂級國王鮭魚輪切</a> <span class="price">$501</span></p>
+      <hr>
+      <p>Total <span class="price" style="color:black"><b>$1590</b></span></p>
+    </div>
+			<div style="visibility:hidden" id="paypalformContainer">
+				<!--
+				<label for="date">日期</label>
+				<input type="date" id="date" name="date">
+				<input type="time" id="appt" name="appt" min="08:00" max="18:00" required>
+				-->
+				<label for="date">配送時段</label>
+				<select id="shopAdr">
+					<option>請選擇配送時段</option>
+					<option>上午</option>
+					<option>下午</option>
+				</select>
+				<label for="date">配送方式 (若選擇分批配送，請於備註填寫配送需求)</label>
+				<select id="shopAdr">
+					<option>請選擇配送方式</option>
+					<option>一次送達</option>
+					<option>分批配送</option>
+				</select>
+				<label for="fname">姓名</label>
+				<input type="text" id="fname" name="firstname" placeholder="John M. Doe">
+				<label for="phone">電話</label>
+				<input type="text" id="phone" name="phone" placeholder="0912345678">
+				<label for="adr">地址</label>
+				<input type="text" id="adr" name="address" placeholder="542 W. 15th Street">
+				<label for="adr">備援地址</label>
+				<select id="shopAdr">
+					<option>請選擇備援地址</option>
+					<option>生鮮倉儲 永春店</option>
+					<option>全家便利商店 工業三店</option>
+				</select>
+				<label for="adr">備註</label>
+				<input type="text" id="phone" name="phone" placeholder="備註">
+			</div>
+			
+			<div style="visibility:hidden;" id="ccformContainer">
+				<label for="fname">Name</label>
+				<input type="text" id="fname" name="firstname" placeholder="John M. Doe">
+				<label for="phone">Phone</label>
+				<input type="text" id="phone" name="phone" placeholder="0912345678">
+				<label for="adr">Address</label>
+				<select id="shopAdr">
+					<option>請選擇超商地址</option>
+					<option>全家便利商店 工業二店</option>
+					<option>全家便利商店 工業三店</option>
+				</select>
+			</div>
+  </div>
+</div>
+
+</body>
+</html>
