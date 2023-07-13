@@ -208,7 +208,7 @@ span.price {
       
         <div class="row">
           <div class="col-50">
-            <h3>Information</h3>
+            <h3>收件資訊</h3>
 			<label>請選擇配送方式</label>
 			<label class="containerRadio"><input name="paymentType" type="radio" id="creditCard" onclick="updateForm(this);" checked="checked" value="paypal"><span class="radio"></span>
 			超商
@@ -242,8 +242,16 @@ span.price {
 				<label for="date">配送時段</label>
 				<select id="shopAdr">
 					<option>請選擇配送時段</option>
-					<option>上午</option>
-					<option>下午</option>
+					<option>08:00 - 09:00</option>
+					<option>09:00 - 10:00</option>
+					<option>10:00 - 11:00</option>
+					<option>11:00 - 12:00</option>
+					<option>12:00 - 13:00</option>
+					<option>13:00 - 14:00</option>
+					<option>14:00 - 15:00</option>
+					<option>15:00 - 16:00</option>
+					<option>16:00 - 17:00</option>
+					<option>17:00 - 18:00</option>
 				</select>
 				<label for="date">配送方式 (若選擇分批配送，請於備註填寫配送需求)</label>
 				<select id="shopAdr">
@@ -260,7 +268,7 @@ span.price {
 				<label for="adr">備援地址</label>
 				<select id="shopAdr">
 					<option>請選擇備援地址</option>
-					<option>生鮮倉儲 永春店</option>
+					<option>生鮮倉儲 永春店 (冷藏/冷凍)</option>
 					<option>全家便利商店 工業三店</option>
 				</select>
 				<label for="adr">備註</label>
@@ -275,7 +283,7 @@ span.price {
 				<label for="adr">地址</label>
 				<select id="shopAdr">
 					<option>請選擇超商地址</option>
-					<option>全家便利商店 工業二店</option>
+					<option>全家便利商店 工業二店 (冷藏/冷凍)</option>
 					<option>全家便利商店 工業三店</option>
 				</select>
 			</div>
